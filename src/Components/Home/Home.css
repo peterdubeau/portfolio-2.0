@@ -6,3 +6,30 @@ ul{
   text-align: center;
 }
 
+.power-buttons{ 
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+  position: fixed;
+  width: 70%;
+  left: 0;
+  right: 0;
+  bottom: 10%;
+  margin: 5% auto;
+  align-self: center;
+  z-index: 99;
+}
+
+.power-light{
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  z-index: 99;
+}
+
+.reset-button, .power-button{
+  z-index: 99;
+  color: darkred;
+}
+

@@ -43,7 +43,7 @@ export default function ScreenFlash() {
 
   return (
     <div className="flicker" style={color}>
-      
+
     </div>
   )
 }
