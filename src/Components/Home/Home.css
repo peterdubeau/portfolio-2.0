@@ -3,6 +3,10 @@ ul{
 }
 
 .intro{
+  margin-top: 200px; 
+}
+
+.intro-container{
   text-align: center;
 }
 

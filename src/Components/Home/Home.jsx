@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import ScreenFlash from '../ScreenFlash/ScreenFlash'
 import Static from '../Static/Static'
 import './Home.css'
@@ -7,28 +8,51 @@ export default function Home() {
 
   const [reset, setReset] = useState(true)
   const [power, setPower] = useState(false)
+  const [startFlash, setStartFlash] = useState({color: "white"})
+  
+  const history = useHistory()
+  const slow = (ms) => {
+    return new Promise(slowDown => setInterval(slowDown, ms))
+  }
 
-  const handlePower = () => {
+  const handlePower = async () => {
     setReset(true)
+    await slow(250)
     setPower(!power)
   }
 
-  const handleReset = () => {
-    
-  } 
+  const handleStart = async () => {
+    for (let i = 0; i < 7; i++) {
+      setStartFlash({ color: "black" })
+      await slow(100)
+      setStartFlash({ color: "white" })
+      await slow(100)
+    }
+    history.push('/menu')
+  }
+
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      handleStart()
+    }
+  };
+
 
   return (
-    <div className='intro'>
-      <h1>Pete Du Beau</h1>
-      <p>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.</p>
-      <h3>Make your selection</h3>
-      <ul>
-        <li>Projects</li>
-        <li>About Me</li>
-        <li>Contact</li>
-      </ul>
+    <div className='intro-container'>
+      <div className='intro'>
+        <h1>Pete Du Beau</h1>
+        <h3>My Portfolio</h3>
+        <br/><br/>
+        <p
+          onClick={handleStart}
+          style={startFlash}
+        >PRESS START</p>
+      </div>
+    
       <div className='power-buttons'>
         <button 
+          onKeyPress={handleKeyPress}
           className='reset-button'
           onClick={() => setReset(false)}
         >RESET</button>
@@ -38,7 +62,7 @@ export default function Home() {
         >
         POWER
         </button>
-        {reset ? <ScreenFlash /> : ''}
+        {reset ? <ScreenFlash slow={slow}/> : ''}
         {power ? "" : <Static />}
         <div className="power-light" style={power? {backgroundColor: "red"} : {backgroundColor: "black"} }></div>
       </div>
