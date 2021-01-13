@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <div className='intro-container'>
       <div className='intro'>
-        <h1>Pete Du Beau</h1>
+        <h1>Pete <br/>Du Beau</h1>
         <h3>My Portfolio</h3>
         <br/><br/>
         <p
