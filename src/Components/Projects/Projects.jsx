@@ -1,9 +1,15 @@
 import React from 'react'
-import projectDetails from '../projectDetails.json'
 
-export default function Projects() {
-  return (
-  <></>
-  )
-}
+export default function Projects(props) {
+
+  console.log(props.selected)
+
+    return (<>
+      {props.selected.title}
+      {props.selected.description}
+      <img src={props.selected.imageURL} />
+      {props.selected.websiteURL}
+      {props.selected.githubURL}
+    </>)
+  }
 
