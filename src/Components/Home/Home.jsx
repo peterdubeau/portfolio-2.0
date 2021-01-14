@@ -1,71 +1,83 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import ScreenFlash from '../ScreenFlash/ScreenFlash'
-import Static from '../Static/Static'
-import './Home.css'
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-plusplus */
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import ScreenFlash from '../ScreenFlash/ScreenFlash';
+import Static from '../Static/Static';
+import './Home.css';
 
 export default function Home() {
-
-  const [reset, setReset] = useState(true)
-  const [power, setPower] = useState(false)
-  const [startFlash, setStartFlash] = useState({color: "white"})
-  
-  const history = useHistory()
+  const [reset, setReset] = useState(true);
+  const [power, setPower] = useState(false);
+  const [startFlash, setStartFlash] = useState({ color: 'white' });
+  const history = useHistory();
   const slow = (ms) => {
-    return new Promise(slowDown => setInterval(slowDown, ms))
-  }
+    const newLocal = new Promise((slowDown) => setInterval(slowDown, ms));
+    return newLocal;
+  };
 
   const handlePower = async () => {
-    setReset(true)
-    await slow(250)
-    setPower(!power)
-  }
+    setReset(true);
+    await slow(250);
+    setPower(!power);
+  };
 
   const handleStart = async () => {
     for (let i = 0; i < 7; i++) {
-      setStartFlash({ color: "black" })
-      await slow(100)
-      setStartFlash({ color: "white" })
-      await slow(100)
+      setStartFlash({ color: 'black' });
+      await slow(100);
+      setStartFlash({ color: 'white' });
+      await slow(100);
     }
-    history.push('/menu')
-  }
+    history.push('/menu');
+  };
 
-  const handleKeyPress = e => {
+  const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      handleStart()
+      handleStart();
     }
   };
 
-
   return (
-    <div className='intro-container'>
-      <div className='intro'>
-        <h1>Pete <br/>Du Beau</h1>
+    <div className="intro-container">
+      <div className="intro">
+        <h1>
+          Pete
+          <br />
+          Du Beau
+        </h1>
         <h3>My Portfolio</h3>
-        <br/><br/>
+        <br />
+        <br />
         <p
           onClick={handleStart}
           style={startFlash}
-        >PRESS START</p>
+        >
+          PRESS START
+        </p>
       </div>
-    
-      <div className='power-buttons'>
-        <button 
-          onKeyPress={handleKeyPress}
-          className='reset-button'
-          onClick={() => setReset(false)}
-        >RESET</button>
+
+      <div className="power-buttons">
         <button
-          className='power-button'
+          onKeyPress={handleKeyPress}
+          className="reset-button"
+          onClick={() => setReset(false)}
+        >
+          RESET
+        </button>
+        <button
+          className="power-button"
           onClick={handlePower}
         >
-        POWER
+          POWER
         </button>
-        {reset ? <ScreenFlash slow={slow}/> : ''}
-        {power ? "" : <Static />}
-        <div className="power-light" style={power? {backgroundColor: "red"} : {backgroundColor: "black"} }></div>
+        {reset ? <ScreenFlash slow={slow} /> : ''}
+        {power ? '' : <Static />}
+        <div className="power-light" style={power ? { backgroundColor: 'red' } : { backgroundColor: 'black' }} />
       </div>
     </div>
-  )
+  );
 }

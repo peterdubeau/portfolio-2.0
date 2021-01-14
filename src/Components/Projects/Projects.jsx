@@ -1,9 +1,8 @@
-import React from 'react'
-import projectDetails from '../projectDetails.json'
+/* eslint-disable no-unused-vars */
+import React from 'react';
 
 export default function Projects() {
   return (
-  <></>
-  )
+    <></>
+  );
 }
-
