@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import About from '../About/About'
+import ProjectIcons from '../ProjectIcons/ProjectIcons'
 import './Menu.css'
 
 export default function Menu() {
@@ -10,14 +11,18 @@ export default function Menu() {
     contact: false
   })
 
-  const handleKeyPress = e => {
-    if (e.key === 'Down') {
-      
-    }
-  };
+  const slow = (ms) => {
+    return new Promise(slowDown => setInterval(slowDown, ms))
+  }
 
-  const handleAbout = () => {
+  const handleAbout = async () => {
+    await slow(600)
     setDisplay({about:!display.about})
+  }
+
+  const handleProjects = async () => {
+    await slow(600)
+    setDisplay({projects: !display.projects})
   }
 
 
@@ -33,7 +38,7 @@ export default function Menu() {
 
           <label>
             <input type="radio" class="nes-radio is-dark" name="answer-dark" />
-            <span>Projects</span>
+            <span onClick={handleProjects}>Projects</span>
           </label>
               
           <label>
@@ -41,7 +46,8 @@ export default function Menu() {
             <span>Contact</span>
           </label>
       </div>
-      {display.about ? <About /> : "" }
+      {display.about ? <About close={setDisplay} /> : ""}
+      {display.projects ? <ProjectIcons close={setDisplay} /> : ''}
       </div>
   )
 }

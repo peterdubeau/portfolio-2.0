@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Ordo Nomina",
+    "imageURL": "https://res.cloudinary.com/dyrvlnond/image/upload/v1608509018/Tracker/Artboard_1_llwk43.png",
+    "description": "Ordo Nomina is an initiative tracker for D&D (or any tabletop RPG) that allows players to easily track their initiative across a game session with real-time updates to their browser.",
+    "toolsUsed": "JavaScript, ReactJS, Ruby, Ruby on Rails, Websockets",
+    "websiteURL": "https://www.ordonomina.com/",
+    "githubURL": "https://github.com/peterdubeau/Ordo-Nomina",
+    "type": "Full Stack Web App"
+  },
+  {
+    "title": "Beernoculars",
+    "imageURL": "https://res.cloudinary.com/dyrvlnond/image/upload/v1598449073/portfolio/Beernocular-med_qnr7dl.png",
+    "description": "Beernoculars is application that gives users a list of beers they may like based on a few search criteria (style, ABV, ect.) The page will then display up to 4 beers that match the users request.",
+    "toolsUsed": "JavaScript",
+    "websiteURL": "http://beernoculars.surge.sh/",
+    "githubURL": "https://github.com/peterdubeau/beernoculars",
+    "type": "Front End App"
+  },
+  {
+    "title": "Rookies & Dragons",
+    "imageURL": "https://res.cloudinary.com/dyrvlnond/image/upload/v1598372157/portfolio/rookies_and_dragons_pdyrzw.png",
+    "description": "Rookies & Dragons is a website to help new Dungeons and Dragons players choose a class for their first character through pop-culture references. The users then receive detailed examples of the class along with lore, their abilities and their traditional roll in a party.",
+    "toolsUsed": "JavaScript, ReactJS, ",
+    "websiteURL": "https://www.rookiesanddragons.com/",
+    "githubURL": "https://github.com/peterdubeau/rookies-and-dragons",
+    "type": "Front End App"
+  },
+  {
+    "title": "Next Round",
+    "imageURL": "https://res.cloudinary.com/dyrvlnond/image/upload/v1598454362/portfolio/Next-round-med_hwghzy.png",
+    "description": "Next Round is an app that allows users to track who has and has not completed a given task. When a user completes the task (i.e. buying a round of drinks at the bar) their name is removed from the pool. Once all users have completed the task, all user names are placed back in the task pool to repeat the process. Whether it be buying rounds of drinks at the bar or completing household chores, Next Round will make sure everybody chips in.",
+    "toolsUsed": "JavaScript, ReactJS, Ruby, Ruby on Rails",
+    "websiteURL": "http://next-round.surge.sh/",
+    "githubURL": "https://github.com/peterdubeau/rookies-and-dragons",
+    "type": "Full Stack App"
+
+  }
+  
+]

@@ -1,6 +1,6 @@
 import React from 'react'
 import './About.css'
-export default function About() {
+export default function About(props) {
   return (
     <div className="about-container">
       <div className="nes-container is-dark with-title">
@@ -12,6 +12,12 @@ export default function About() {
         developing customized solutions that speak to the heart of customers needs.
         I seek the opportunity to join a forward-thinking technology team that places
         consumer experience at the center of what they do.
+        <br />
+        <br/>
+        <label>
+            <input type="radio" class="nes-radio is-dark" name="answer-dark"  checked/>
+            <span onClick={() => props.close({about: false})}>Back</span>
+        </label>
       </div>
     </div>
   )
