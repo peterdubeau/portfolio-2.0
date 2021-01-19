@@ -42,7 +42,10 @@ export default function ProjectIcons(props) {
             </label>
           </div>
       </div>
-        <Projects selected={selectedProject} />
+      <Projects
+        selected={selectedProject}
+        close={props.close}
+      />
       </article>
   )
 }
