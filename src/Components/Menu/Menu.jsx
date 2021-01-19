@@ -4,12 +4,13 @@ import ProjectIcons from '../ProjectIcons/ProjectIcons'
 import './Menu.css'
 
 export default function Menu() {
-
+  
   const [display, setDisplay] = useState({
     about: false,
     projects: false,
     contact: false
   })
+  const [boxSize, setBoxSize] = useState('0px')
 
   const slow = (ms) => {
     return new Promise(slowDown => setInterval(slowDown, ms))
@@ -17,15 +18,30 @@ export default function Menu() {
 
   const handleAbout = async () => {
     await slow(600)
-    setDisplay({about:!display.about})
+    setDisplay({ about: !display.about })
+    growBox()
   }
 
   const handleProjects = async () => {
     await slow(600)
-    setDisplay({projects: !display.projects})
+    setDisplay({ projects: !display.projects })
   }
 
 
+  const growBox = async () => {
+    for (let i = 0; i < 10; i++) {
+      await slow(75)
+      setBoxSize({
+        height: `${i * 8}vh`,
+        width: `${i * 10}vw`
+      })
+    }
+    setBoxSize({
+      ...boxSize,
+      done: true
+    })
+}
+  
   return (
     <div >
       <p className='intro '>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.</p>
@@ -46,7 +62,11 @@ export default function Menu() {
             <span>Contact</span>
           </label>
       </div>
-      {display.about ? <About close={setDisplay} /> : ""}
+      {display.about ? <About
+        close={setDisplay}
+        boxSize={boxSize}
+      
+      /> : ""}
       {display.projects ? <ProjectIcons close={setDisplay} /> : ''}
       </div>
   )

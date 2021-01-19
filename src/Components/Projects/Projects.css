@@ -1,0 +1,10 @@
+.project-card{
+  size: grow 5s ease-in;
+}
+
+/* @keyframes grow{
+  0% {height: 0%; width: 0%; animation-delay: 200ms;}
+  33% {height: 33; width: 33%; animation-delay: 200ms;}
+  66% {height: 66%; width: 66%; animation-delay: 200ms;}
+  100% {height: 100%; width: 100%; animation-delay: 200ms;}
+} */

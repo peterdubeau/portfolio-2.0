@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from 'react'
+import './Projects.css'
 
 
 export default function Projects(props) {
@@ -10,6 +11,7 @@ export default function Projects(props) {
   return (<>
     { props.selected.details === "" ? "" :
       <div className='project-container'>
+        <div className ="project-card">
         <div className="nes-container is-dark with-title">
           {props.selected.title}
           {props.selected.description}
@@ -24,6 +26,7 @@ export default function Projects(props) {
             <input type="radio" class="nes-radio is-dark" name="answer-dark" />
             <span onClick={() => props.close({ about: false })}>Back</span>
           </label>
+        </div>
         </div>
       </div>
       }
