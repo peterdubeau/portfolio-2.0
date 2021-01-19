@@ -9,7 +9,6 @@ export default function ProjectIcons(props) {
     details: '',
     title: ''
   })
-  const [showProject, setShowProject] = useState(false)
 
   const findProject = (project) => {
     let selectedProject = projectDetails.filter(function (name) {
@@ -18,10 +17,6 @@ export default function ProjectIcons(props) {
     setSelectedProject(...selectedProject)
   }
   
-  const handleProject = (selected) => {
-    findProject(selected)
-    setShowProject(!showProject)
-  }
   
 
   return (

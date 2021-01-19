@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import About from '../About/About'
 import ProjectIcons from '../ProjectIcons/ProjectIcons'
 import './Menu.css'
