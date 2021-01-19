@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import About from '../About/About'
 import ProjectIcons from '../ProjectIcons/ProjectIcons'
 import './Menu.css'
@@ -29,18 +29,45 @@ export default function Menu() {
 
 
   const growBox = async () => {
+    setBoxSize({
+      height: `0vh`,
+      width: `0vw`,
+      done: false
+    })
     for (let i = 0; i < 10; i++) {
-      await slow(75)
+      await slow(50)
       setBoxSize({
-        height: `${i * 8}vh`,
-        width: `${i * 10}vw`
+        height: `${i * 6}vh`,
+        width: `${i * 10}vw`,
+        done: false
       })
     }
     setBoxSize({
       ...boxSize,
       done: true
     })
-}
+  }
+
+  const shrinkBox = async () => {
+    setBoxSize({
+      height: `0vh`,
+      width: `0vw`,
+      done: false
+    })
+    for (let i = 10; i > 0; i--) {
+      await slow(50)
+      setBoxSize({
+        height: `${i * 6}vh`,
+        width: `${i * 10}vw`,
+        done: false
+      })
+    }
+    setBoxSize({
+      ...boxSize,
+      done: true
+    })
+  }
+  
   
   return (
     <div >
@@ -63,8 +90,11 @@ export default function Menu() {
           </label>
       </div>
       {display.about ? <About
+        status={display}
         close={setDisplay}
         boxSize={boxSize}
+        slow={slow}
+        shrinkBox={shrinkBox}
       
       /> : ""}
       {display.projects ? <ProjectIcons close={setDisplay} /> : ''}

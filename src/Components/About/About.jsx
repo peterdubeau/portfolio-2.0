@@ -1,7 +1,13 @@
 import React from 'react'
 import './About.css'
+
 export default function About(props) {
 
+  const handleClose = async () => {
+    props.shrinkBox()
+    await props.slow(500)
+    props.close({ about: !props.status.about })
+  }
 
   return (
     <div className="about-container">
@@ -23,7 +29,7 @@ export default function About(props) {
             style={props.boxSize.done === true  ? { height: '300px'} : { display: 'none' } }
           checked />
           <span
-            onClick={() => props.close({ about: false })}
+            onClick={handleClose}
             style={props.boxSize.done === true ? { height: '300px' } : { display: 'none' }}
           >Back</span>
         </label>
