@@ -25,6 +25,7 @@ export default function Menu() {
   const handleProjects = async () => {
     await slow(600)
     setDisplay({ projects: !display.projects })
+    growBox()
   }
 
 
@@ -50,9 +51,7 @@ export default function Menu() {
 
   const shrinkBox = async () => {
     setBoxSize({
-      height: `0vh`,
-      width: `0vw`,
-      done: false
+      ...boxSize
     })
     for (let i = 10; i > 0; i--) {
       await slow(50)
@@ -97,7 +96,13 @@ export default function Menu() {
         shrinkBox={shrinkBox}
       
       /> : ""}
-      {display.projects ? <ProjectIcons close={setDisplay} /> : ''}
+      {display.projects ? <ProjectIcons
+        close={setDisplay}
+        shrinkBox={shrinkBox}
+        boxSize={boxSize}
+        growBox={growBox}
+        slow={slow}
+      /> : ''}
       </div>
   )
 }

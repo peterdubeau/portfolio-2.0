@@ -5,8 +5,6 @@ import './Projects.css'
 
 export default function Projects(props) {
   
-  console.log(props.selected)
-  
   return (<>
     { props.selected.details === "" ? "" :
       <div className='project-container'>

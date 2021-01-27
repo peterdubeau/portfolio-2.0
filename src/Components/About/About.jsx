@@ -8,11 +8,11 @@ export default function About(props) {
     await props.slow(500)
     props.close({ about: !props.status.about })
   }
-
+  
   return (
     <div className="about-container">
       <div className="nes-container is-dark with-title" style={{height: props.boxSize.height, width: (props.boxSize.width)}}>
-        <p className='title'>About Me</p>  
+        <p className='title' style={props.boxSize.done === true ? { display: "inherit" } : { display: 'none' }} >About Me</p>  
         <p className='about-me-text' style={props.boxSize.done === true ? { display: "inherit"} : { display: 'none' } }>
           I am a software engineer who leverages 8 years of sales and account management 
           experience to build and implement consumer driven products.

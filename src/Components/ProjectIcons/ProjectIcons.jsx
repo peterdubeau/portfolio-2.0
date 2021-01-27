@@ -17,23 +17,31 @@ export default function ProjectIcons(props) {
     setSelectedProject(...selectedProject)
   }
   
+  const handleClose = async () => {
+    props.shrinkBox()
+    await props.slow(500)
+    props.close({ about: false })
+  }
   
-
   return (
-      <article className="project-container" >
-        <div className="nes-container is-dark with-title">
-          <div className="project-list">
+    <article className="project-container" >
+      <div className="nes-container is-dark with-title" style={{
+      height: props.boxSize.height,
+      width: props.boxSize.width
+    }}>
+        <p className='title' style={props.boxSize.done === true ? { display: "inherit" } : { display: 'none' }} >Projects</p>
+          <div className="project-list" style={props.boxSize.done === true ? { display: "inherit" } : { display: 'none' }} >
           {projectDetails.map(project =>
           <label>
-            <input type="radio" class="nes-radio is-dark" name="answer-dark"  />
-              <span onClick={() => findProject(project.title)}>{project.title}</span>
+            <input type="radio" class="nes-radio is-dark" name="answer-dark"  style={props.boxSize.done === true ? { display: "inherit" } : { display: 'none' }} />
+              <span onClick={() => findProject(project.title)} >{project.title}</span>
           </label>
           )}
           <br/>
           <br/>
         <label>
               <input type="radio" class="nes-radio is-dark" name="answer-dark" />
-              <span onClick={() => props.close({about: false})}>Back</span>
+              <span onClick={handleClose}>Back</span>
             </label>
           </div>
       </div>
