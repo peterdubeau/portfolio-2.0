@@ -23,14 +23,15 @@ export default function ProjectIcons(props) {
     await props.slow(500)
     props.close({ about: false })
   }
-  
+  console.log(selectedProject.title)
   return (
     <article className="project-container" >
       <div className="nes-container is-dark with-title" style={{
       height: props.boxSize.height,
       width: props.boxSize.width
-    }}>
-        <p className='title' style={props.boxSize.done === true ? { display: "inherit" } : { display: 'none' }} >Projects</p>
+    }}> 
+    {/* selectedProject.title === undefined &&  */}
+        <p className='title' style={props.boxSize.done === true  ? { display: "inherit" } : { display: 'none' }} >Projects</p>
           <div className="project-list" style={props.boxSize.done === true ? { display: "inherit" } : { display: 'none' }} >
           {projectDetails.map(project =>
           <label>
