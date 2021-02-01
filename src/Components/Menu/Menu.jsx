@@ -10,7 +10,7 @@ export default function Menu() {
     projects: false,
     contact: false
   })
-  const [boxSize, setBoxSize] = useState('0px')
+  const [boxSize, setBoxSize] = useState('')
 
   const slow = (ms) => {
     return new Promise(slowDown => setInterval(slowDown, ms))
@@ -19,17 +19,18 @@ export default function Menu() {
   const handleAbout = async () => {
     await slow(600)
     setDisplay({ about: !display.about })
-    growBox()
+    growBox(6,9)
   }
 
   const handleProjects = async () => {
     await slow(600)
     setDisplay({ projects: !display.projects })
-    growBox()
+    growBox(3,5)
   }
 
 
-  const growBox = async () => {
+
+  const growBox = async (h,w) => {
     setBoxSize({
       height: `0vh`,
       width: `0vw`,
@@ -38,8 +39,8 @@ export default function Menu() {
     for (let i = 0; i < 10; i++) {
       await slow(50)
       setBoxSize({
-        height: `${i * 6}vh`,
-        width: `${i * 10}vw`,
+        height: `${i * h}vh`,
+        width: `${i * w}vw`,
         done: false
       })
     }
@@ -49,15 +50,15 @@ export default function Menu() {
     })
   }
 
-  const shrinkBox = async () => {
+  const shrinkBox = async (h,w) => {
     setBoxSize({
       ...boxSize
     })
     for (let i = 10; i > 0; i--) {
       await slow(50)
       setBoxSize({
-        height: `${i * 6}vh`,
-        width: `${i * 10}vw`,
+        height: `${i * h}vh`,
+        width: `${i * w}vw`,
         done: false
       })
     }

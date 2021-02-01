@@ -1,3 +1,7 @@
+.title{
+  width: 200px;
+}
+
 .about-container{
   position: absolute;
   display: flex;

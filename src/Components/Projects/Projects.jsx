@@ -1,16 +1,30 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Projects.css'
 
 
 export default function Projects(props) {
   
+    // useEffect(() => {
+    //   props.growBox(6, 10)
+    // },[])
+    //Enabling this breaks the page
+
+  const handleClose = async () => {
+    props.shrinkBox(6,10)
+    await props.slow(400)
+    props.setSelected({details: ""})
+  }
+
   return (<>
     { props.selected.details === "" ? "" :
-      <div className='project-container'>
-        <div className ="project-card">
-        <div className="nes-container is-dark with-title">
-          {props.selected.title}
+      <div className='project-container' style={{
+        height: props.boxSize.height,
+        width: props.boxSize.width
+      }}>
+        <div className ="project-card" style={props.boxSize.done === true ? { display: "inherit" } : { display: 'none' }}>
+          <div className="nes-container is-dark with-title">
+            <p className='title' >{props.selected.title}</p>
           {props.selected.description}
             <img src={props.selected.imageURL}
               style={{
@@ -24,7 +38,7 @@ export default function Projects(props) {
           <button ><a href={props.selected.githubURL}>Git Hub</a></button>
           <label>
             <input type="radio" class="nes-radio is-dark" name="answer-dark" />
-            <span onClick={() => props.close({ about: false })}>Back</span>
+            <span onClick={handleClose}>Back</span>
           </label>
         </div>
         </div>

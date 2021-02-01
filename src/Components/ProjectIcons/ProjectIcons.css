@@ -1,12 +1,17 @@
 .project-container{
   position: absolute;
-  display: flex;
-  flex-direction: column;
   top: 5%;
   margin: 10px;
+  max-width: 400px;
   font-size: 14px;
+
+}t
+
+.project-list{
+  display: flex;
+  flex-direction: row;
 }
 
-.project-titles{
-  margin: 20px auto;
+.title{
+  margin: 40px auto;
 }

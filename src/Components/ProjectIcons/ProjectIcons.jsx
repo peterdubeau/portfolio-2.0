@@ -15,10 +15,11 @@ export default function ProjectIcons(props) {
       return name.title === project
     });
     setSelectedProject(...selectedProject)
+    props.growBox(6,10)
   }
   
   const handleClose = async () => {
-    props.shrinkBox()
+    props.shrinkBox(3, 5)
     await props.slow(500)
     props.close({ about: false })
   }
@@ -34,7 +35,7 @@ export default function ProjectIcons(props) {
           {projectDetails.map(project =>
           <label>
             <input type="radio" class="nes-radio is-dark" name="answer-dark"  style={props.boxSize.done === true ? { display: "inherit" } : { display: 'none' }} />
-              <span onClick={() => findProject(project.title)} >{project.title}</span>
+              <span onClick={() => findProject(project.title)} className='project-title'>{project.title}</span>
           </label>
           )}
           <br/>
@@ -47,7 +48,12 @@ export default function ProjectIcons(props) {
       </div>
       <Projects
         selected={selectedProject}
+        setSelected={setSelectedProject}
         close={props.close}
+        shrinkBox={props.shrinkBox}
+        growBox={props.growBox}
+        slow={props.slow}
+        boxSize={props.boxSize}
       />
       </article>
   )
