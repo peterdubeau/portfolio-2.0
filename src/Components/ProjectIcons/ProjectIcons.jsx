@@ -25,7 +25,7 @@ export default function ProjectIcons(props) {
   }
   console.log(selectedProject.title)
   return (
-    <article className="project-container" >
+    <article className="project-icon-container" >
       <div className="nes-container is-dark with-title" style={{
       height: props.boxSize.height,
       width: props.boxSize.width

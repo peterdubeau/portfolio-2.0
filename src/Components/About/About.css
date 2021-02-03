@@ -30,4 +30,8 @@
     font-size: 30px;
   }
 
+  .nes-container.is-dark.with-title{
+    width: 90vw;
+  }
+
 }

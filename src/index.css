@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* body{
+  background-color: darkkhaki !important;
+  color: darkolivegreen !important;
+}
+
+div.nes-container.is-dark.with-title, .title, span, .project-link-buttons{
+  background-color: darkkhaki !important;
+  color: darkolivegreen !important;
+  border-color: darkolivegreen;
+  box-shadow: darkkhaki;
+} */

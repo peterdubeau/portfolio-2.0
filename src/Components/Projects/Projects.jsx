@@ -14,28 +14,28 @@ export default function Projects(props) {
 
   return (<>
     { props.selected.details === "" ? "" :
-      <div className='project-container' style={{
-        height: props.boxSize.height,
-        width: props.boxSize.width
-      }}>
-        <div className ="project-card" style={props.boxSize.done === true ? { display: "inherit" } : { display: 'none' }}>
+        <div className ="project-card" style={props.boxSize.done === true ? {} : { display: 'none' }}>
+        <div className='project-container' style={{
+          height: props.boxSize.height,
+          width: props.boxSize.width
+        }}>
           <div className="nes-container is-dark with-title">
             <p className='title' >{props.selected.title}</p>
-          {props.selected.description}
+            <div className="project-details">
             <img src={props.selected.imageURL}
-              style={{
-              imageRendering: "pixelated",
-              height: "100px",
-              width: "100px"
-              }}
               alt={props.selected.title}
+              className="project-image"
             />
-          <button ><a href={props.selected.websiteURL}>Page</a></button>
-          <button ><a href={props.selected.githubURL}>Git Hub</a></button>
-          <label>
+            <p className='project-description'>{props.selected.description}</p>
+            <div className="project-links">
+              <button className="project-link-buttons"><a href={props.selected.websiteURL}>Page</a></button>
+              <button className="project-link-buttons"><a href={props.selected.githubURL}>Git Hub</a></button>
+            </div>
+          <label style={{marginLeft: "-90%"}}>
             <input type="radio" class="nes-radio is-dark" name="answer-dark" />
-            <span onClick={handleClose}>Back</span>
-          </label>
+                <span onClick={handleClose}>Back</span>
+              </label>
+            </div>
         </div>
         </div>
       </div>
