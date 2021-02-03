@@ -6,6 +6,7 @@ import './Menu.css'
 export default function Menu() {
   
   const [display, setDisplay] = useState({
+    intro: true,
     about: false,
     projects: false,
     contact: false
@@ -26,6 +27,11 @@ export default function Menu() {
     await slow(600)
     setDisplay({ projects: !display.projects })
     growBox(3,10)
+  }
+
+  const handleIntro = async () => {
+    await slow(200)
+    setDisplay({intro: !display.intro})
   }
 
 
@@ -68,14 +74,16 @@ export default function Menu() {
     })
   }
   
-  
   return (
     <div >
-      <p className='intro '>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.</p>
-      <div className='nav'>
-        <h3>Make your selection</h3>
+      { display.intro ? 
+      <p className='intro' onClick={handleIntro}>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.</p>
+        : ""}
+      { display.intro ? "" :
+        <div className='nav'>
+          <h4 className="make-selection">Make your selection</h4>
           <label>
-            <input type="radio" class="nes-radio is-dark" name="answer-dark"  />
+            <input type="radio" class="nes-radio is-dark" name="answer-dark" />
             <span onClick={handleAbout}>About Me</span>
           </label>
 
@@ -88,7 +96,12 @@ export default function Menu() {
             <input type="radio" class="nes-radio is-dark" name="answer-dark" />
             <span>Contact</span>
           </label>
-      </div>
+          <label onClick={handleIntro}>
+            <input type="radio" class="nes-radio is-dark" name="answer-dark" />
+            <span>Back</span>
+          </label>
+        </div>
+      }
       {display.about ? <About
         status={display}
         close={setDisplay}

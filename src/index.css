@@ -5,6 +5,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
   color: white;
+  background-image: url('https://res.cloudinary.com/dyrvlnond/image/upload/c_crop,h_497/v1612387486/Game_boy_skin_ue5uvl.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position-x: -10px;
+  background-position-y: -10px; */
+  background-clip: border-box;
 }
 
 code {
@@ -12,15 +18,16 @@ code {
     monospace;
 }
 
-
-/* body{
+body{
   background-color: darkkhaki !important;
   color: darkolivegreen !important;
 }
 
+/* 
 div.nes-container.is-dark.with-title, .title, span, .project-link-buttons{
   background-color: darkkhaki !important;
   color: darkolivegreen !important;
   border-color: darkolivegreen;
   box-shadow: darkkhaki;
-} */
+} 
+*/

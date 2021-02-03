@@ -1,3 +1,7 @@
+a{
+  color:white;
+}
+
 .project-container{
   position: absolute;
   top: 5%;
@@ -28,6 +32,9 @@ div.project-links{
 
 .project-link-buttons{
   margin: auto 20px; 
+  background-color: rgb(31	34	37);
+  border: 2px solid white;
+  color: white;
 }
 
 .project-image{

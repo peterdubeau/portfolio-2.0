@@ -10,17 +10,18 @@ export default function ProjectIcons(props) {
     title: ''
   })
 
-  const findProject = (project) => {
+  const findProject = async (project) => {
     let selectedProject = projectDetails.filter(function (name) {
       return name.title === project
     });
+    await props.slow(600)
     setSelectedProject(...selectedProject)
     props.growBox(6,9)
   }
   
   const handleClose = async () => {
-    props.shrinkBox(3, 10)
-    await props.slow(500)
+    await props.slow(600)
+    await props.shrinkBox(3, 10)
     props.close({ about: false })
   }
   console.log(selectedProject.title)

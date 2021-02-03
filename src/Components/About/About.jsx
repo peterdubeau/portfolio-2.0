@@ -4,8 +4,8 @@ import './About.css'
 export default function About(props) {
 
   const handleClose = async () => {
-    props.shrinkBox(6,10)
-    await props.slow(500)
+    await props.slow(600)
+    await props.shrinkBox(6, 10)
     props.close({ about: !props.status.about })
   }
   

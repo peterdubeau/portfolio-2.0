@@ -7,8 +7,8 @@ export default function Projects(props) {
 
 
   const handleClose = async () => {
-    props.shrinkBox(6,10)
-    await props.slow(400)
+    await props.slow(600)
+    await props.shrinkBox(6, 10)
     props.setSelected({details: ""})
   }
 

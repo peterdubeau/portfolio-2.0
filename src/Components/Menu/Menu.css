@@ -1,6 +1,7 @@
 .intro{
-  margin: 10px;
-  margin-top: 100px;
+  margin: 23%;
+  margin-top: 20%;
+  text-align: center;
 }
 
 .nav{
@@ -18,4 +19,8 @@
 
 .options{
   margin: 20px 0;
+}
+
+.make-selection{
+  margin: auto 15%;
 }
