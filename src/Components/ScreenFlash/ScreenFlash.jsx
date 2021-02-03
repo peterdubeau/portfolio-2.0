@@ -28,15 +28,6 @@ export default function ScreenFlash(props) {
     colorChange()
   },[])
 
-  // const gray = {
-  //   backgroundColor: "gray"
-  // }
-
-  // const blue = {
-  //   backgroundColor: "blue"
-  // }
-
-
 
   return (
     <div className="flicker" style={color}></div>

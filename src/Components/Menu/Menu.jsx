@@ -19,13 +19,13 @@ export default function Menu() {
   const handleAbout = async () => {
     await slow(600)
     setDisplay({ about: !display.about })
-    growBox(9,6)
+    growBox(6,10)
   }
 
   const handleProjects = async () => {
     await slow(600)
     setDisplay({ projects: !display.projects })
-    growBox(3,5)
+    growBox(3,10)
   }
 
 

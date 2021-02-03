@@ -1,14 +1,10 @@
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Projects.css'
 
 
 export default function Projects(props) {
-  
-    // useEffect(() => {
-    //   props.growBox(6, 10)
-    // },[])
-    //Enabling this breaks the page
+
 
   const handleClose = async () => {
     props.shrinkBox(6,10)

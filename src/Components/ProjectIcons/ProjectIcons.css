@@ -2,17 +2,38 @@
   position: absolute;
   top: 5%;
   margin: 10px;
-  max-width: 400px;
+  /* max-width: 400px; */
   font-size: 14px;
 
-}t
+}
 
 .project-list{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .title{
   margin: 40px auto;
   white-space: nowrap;
+}
+
+
+@media screen and (min-width: 720px){
+  .project-list{
+    font-size: 30px;
+    width: 800px;
+  }
+
+  .nes-container{
+    width: 800px;
+  }
+
+  .project-list{
+    width: 600px;
+  }
+
+  .project-title{
+    margin-top: 20px;
+  }
+
 }
