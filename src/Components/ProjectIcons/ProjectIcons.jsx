@@ -23,7 +23,7 @@ export default function ProjectIcons(props) {
     await props.slow(500)
     props.close({ about: false })
   }
-  console.log(selectedProject.title)
+
   return (
     <article className="project-icon-container" >
       <div className="nes-container is-dark with-title" style={{

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import About from '../About/About'
 import ProjectIcons from '../ProjectIcons/ProjectIcons'
+import Contact from '../Contact/Contact'
 import './Menu.css'
 
 export default function Menu() {
@@ -28,6 +29,11 @@ export default function Menu() {
     growBox(3,10)
   }
 
+  const handleContact = async () => {
+    await slow(600)
+    setDisplay({ contact: !display.contact })
+    growBox(3,10)
+  }
 
 
   const growBox = async (h,w) => {
@@ -68,7 +74,7 @@ export default function Menu() {
     })
   }
   
-  
+  console.log(display.contact)
   return (
     <div >
       <p className='intro '>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.</p>
@@ -86,7 +92,7 @@ export default function Menu() {
               
           <label>
             <input type="radio" class="nes-radio is-dark" name="answer-dark" />
-            <span>Contact</span>
+            <span onClick={handleContact}>Contact</span>
           </label>
       </div>
       {display.about ? <About
@@ -98,6 +104,13 @@ export default function Menu() {
       
       /> : ""}
       {display.projects ? <ProjectIcons
+        close={setDisplay}
+        shrinkBox={shrinkBox}
+        boxSize={boxSize}
+        growBox={growBox}
+        slow={slow}
+      /> : ''}
+      {display.contact ? <Contact
         close={setDisplay}
         shrinkBox={shrinkBox}
         boxSize={boxSize}

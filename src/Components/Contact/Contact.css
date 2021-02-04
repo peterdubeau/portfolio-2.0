@@ -1,0 +1,13 @@
+a.pages{
+  color: white;
+}
+
+.contact-container{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 5%;
+  margin: 10px;
+  width: 90vw;
+  font-size: 14px;
+}
