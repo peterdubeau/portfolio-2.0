@@ -34,8 +34,49 @@
 }
 
 @media screen and (max-width: 720px){
+
+  body{
+    background-color: rgb(214	205	200);
+  }
+
   .reset-button, .power-button, .power-light{
     display: none;
+  }
+
+  .intro{
+    background-color: rgb(139 172 15);
+    color: rgb(48, 98, 48);
+    min-width: 300px;
+    align-self: right;
+    height: 300px;
+    border: 30px solid rgb(117	117	117);
+    border-bottom-right-radius: 10%;
+  }
+  
+  .intro-container{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  h1.pete-dubeau{
+    font-size: 16px;
+    margin-top: 110px;
+    animation: slide-down 3s linear;
+  }
+
+  .gray-bar{
+    position: absolute;
+    width: 250px;
+    height: 30px;
+    top: 100px;
+    background:rgb(117	117	117);
+    z-index: 99;
+  }
+
+  @keyframes slide-down {
+    from {margin-top: -40px;}
+    to {margin-top: 110px;}
   }
 
 }

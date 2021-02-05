@@ -17,10 +17,11 @@ code {
   background-color: darkkhaki !important;
   color: darkolivegreen !important;
 }
+*/
 
 div.nes-container.is-dark.with-title, .title, span, .project-link-buttons{
-  background-color: darkkhaki !important;
-  color: darkolivegreen !important;
-  border-color: darkolivegreen;
+  background-color: rgb(139 172 15);
+  color: rgb(48, 98, 48);
+  border-color: rgb(48, 98, 48);
   box-shadow: darkkhaki;
-} */
+} 
