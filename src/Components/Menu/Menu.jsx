@@ -76,7 +76,7 @@ export default function Menu() {
   
   console.log(display.contact)
   return (
-    <div >
+    <div className='menu-container'>
       <p className='intro '>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.</p>
       <div className='nav'>
         <h3>Make your selection</h3>

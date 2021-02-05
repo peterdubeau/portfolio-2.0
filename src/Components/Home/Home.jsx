@@ -47,14 +47,21 @@ export default function Home() {
   }
 
   const handleStart = async () => {
-      for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 7; i++) {
+      if (isPageWide) {
+        setStartFlash({ color: "rgb(48, 98, 48)" })
+        await slow(100)
+        setStartFlash({ color: "rgb(139 172 15)" })
+        await slow(100)
+      } else {
         setStartFlash({ color: "black" })
         await slow(100)
         setStartFlash({ color: "white" })
         await slow(100)
       }
-      history.push('/menu')
-    } 
+    }
+    history.push('/menu')
+  }
 
 
   const handleKeyPress = (e) => {
@@ -80,8 +87,6 @@ export default function Home() {
   useEffect((isPageWide) => {
       gameBoyStart()
   }, [isPageWide])
-  
-  console.log(home)
   
   return (<>
     <div className='intro-container'>
