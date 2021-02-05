@@ -33,3 +33,9 @@
   color: darkred;
 }
 
+@media screen and (max-width: 720px){
+  .reset-button, .power-button, .power-light{
+    display: none;
+  }
+
+}
