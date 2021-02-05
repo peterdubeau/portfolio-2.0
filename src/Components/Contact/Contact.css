@@ -1,5 +1,6 @@
-a.pages{
+a.page-links:link, a.page-links:visited, a.page-links:hover, a.page-links:active {
   color: white;
+  text-decoration: none;
 }
 
 .contact-container{
