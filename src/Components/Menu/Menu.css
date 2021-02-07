@@ -21,14 +21,36 @@
 }
 
 @media screen and (max-width: 720px){
+  span{
+    color: rgb(48, 98, 48) !important; 
+  }
+
   .intro{
     text-align: center;
   }
   
   .menu-container{
+    
+    color: rgb(48, 98, 48);
     align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+  }
+
+  .nav{
+    position: fixed;
+    top: 40px;
+  }
+
+  .project-choices{
+    margin-bottom: 20px;
+  }
+
+  .selection{
+    text-align: center;
+    width: 300px;
+    margin-bottom: 40px;
   }
 }

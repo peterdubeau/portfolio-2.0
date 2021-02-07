@@ -14,6 +14,9 @@ function App() {
     <Route path='/menu' exact>
       <Menu />
     </Route>
+
+    {/* <div className='gb-controls'> buttons will go here</div> */}
+
   </>);
 }
 

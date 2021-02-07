@@ -9,31 +9,36 @@ export default function Menu() {
   const [display, setDisplay] = useState({
     about: false,
     projects: false,
-    contact: false
+    contact: false,
+    gbIntro: false
   })
   const [boxSize, setBoxSize] = useState('')
 
   const slow = (ms) => {
     return new Promise(slowDown => setInterval(slowDown, ms))
   }
-
+  
   const handleAbout = async () => {
     await slow(600)
     setDisplay({ about: !display.about })
     growBox(6,10)
   }
+  
+  const handleContact = async () => {
+    await slow(600)
+    setDisplay({ contact: !display.contact })
+    growBox(3,10)
+  }
 
+  const handleNext = () => {
+    setDisplay({gbIntro: !display.gbIntro})
+  }
   const handleProjects = async () => {
     await slow(600)
     setDisplay({ projects: !display.projects })
     growBox(3,10)
   }
 
-  const handleContact = async () => {
-    await slow(600)
-    setDisplay({ contact: !display.contact })
-    growBox(3,10)
-  }
 
 
   const growBox = async (h,w) => {
@@ -74,26 +79,33 @@ export default function Menu() {
     })
   }
   
-  console.log(display.contact)
+  
   return (
     <div className='menu-container'>
-      <p className='intro '>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.</p>
-      <div className='nav'>
-        <h3>Make your selection</h3>
-          <label>
+      <p className='intro'>
+        <p className= "intro-text" style={display.gbIntro? {display: "none"} : {}}>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.
+        <label className="next-button">
+            <input type="radio" class="nes-radio is-dark" name="answer-dark" />
+            <span onClick={handleNext}>next</span>
+          </label>
+        </p>
+      </p>
+      <div className='nav' style={display.gbIntro? {} : {display: "none"}}>
+        <h3 className='selection'>Make your selection</h3>
+          <label className="project-choices">
             <input type="radio" class="nes-radio is-dark" name="answer-dark"  />
             <span onClick={handleAbout}>About Me</span>
           </label>
 
-          <label>
+          <label className="project-choices">
             <input type="radio" class="nes-radio is-dark" name="answer-dark" />
             <span onClick={handleProjects}>Projects</span>
           </label>
               
-          <label>
+          <label className="project-choices">
             <input type="radio" class="nes-radio is-dark" name="answer-dark" />
             <span onClick={handleContact}>Contact</span>
-          </label>
+        </label>
       </div>
       {display.about ? <About
         status={display}
