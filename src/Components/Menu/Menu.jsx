@@ -4,7 +4,7 @@ import ProjectIcons from '../ProjectIcons/ProjectIcons'
 import Contact from '../Contact/Contact'
 import './Menu.css'
 
-export default function Menu() {
+export default function Menu(props) {
   
   const [display, setDisplay] = useState({
     about: false,
@@ -80,55 +80,104 @@ export default function Menu() {
   }
   
   
-  return (
-    <div className='menu-container'>
-      <p className='intro'>
-        <p className= "intro-text" style={display.gbIntro? {display: "none"} : {}}>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.
+  return (<>
+    {props.isPageWide ?
+      <div className='menu-container'>
+        <div className='intro'>
+          <p className="intro-text" style={display.gbIntro ? { display: "none" } : {}}>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.
         <label className="next-button">
-            <input type="radio" class="nes-radio is-dark" name="answer-dark" />
-            <span onClick={handleNext}>next</span>
-          </label>
-        </p>
-      </p>
-      <div className='nav' style={display.gbIntro? {} : {display: "none"}}>
-        <h3 className='selection'>Make your selection</h3>
+              <input type="radio" className="nes-radio is-dark" name="answer-dark" />
+              <span onClick={handleNext}>next</span>
+            </label>
+          </p>
+        </div>
+        <div className='nav' style={display.gbIntro ? {} : { display: "none" }}>
+          <h3 className='selection'>Make your selection</h3>
           <label className="project-choices">
-            <input type="radio" class="nes-radio is-dark" name="answer-dark"  />
+            <input type="radio" className="nes-radio is-dark" name="answer-dark" />
             <span onClick={handleAbout}>About Me</span>
           </label>
 
           <label className="project-choices">
-            <input type="radio" class="nes-radio is-dark" name="answer-dark" />
+            <input type="radio" className="nes-radio is-dark" name="answer-dark" />
             <span onClick={handleProjects}>Projects</span>
           </label>
               
           <label className="project-choices">
-            <input type="radio" class="nes-radio is-dark" name="answer-dark" />
+            <input type="radio" className="nes-radio is-dark" name="answer-dark" />
             <span onClick={handleContact}>Contact</span>
-        </label>
-      </div>
-      {display.about ? <About
-        status={display}
-        close={setDisplay}
-        boxSize={boxSize}
-        slow={slow}
-        shrinkBox={shrinkBox}
+          </label>
+        </div>
+        {display.about ? <About
+          status={display}
+          close={setDisplay}
+          boxSize={boxSize}
+          slow={slow}
+          shrinkBox={shrinkBox}
       
-      /> : ""}
-      {display.projects ? <ProjectIcons
-        close={setDisplay}
-        shrinkBox={shrinkBox}
-        boxSize={boxSize}
-        growBox={growBox}
-        slow={slow}
-      /> : ''}
-      {display.contact ? <Contact
-        close={setDisplay}
-        shrinkBox={shrinkBox}
-        boxSize={boxSize}
-        growBox={growBox}
-        slow={slow}
-      /> : ''}
+        /> : ""}
+        {display.projects ? <ProjectIcons
+          close={setDisplay}
+          shrinkBox={shrinkBox}
+          boxSize={boxSize}
+          growBox={growBox}
+          slow={slow}
+        /> : ''}
+        {display.contact ? <Contact
+          close={setDisplay}
+          shrinkBox={shrinkBox}
+          boxSize={boxSize}
+          growBox={growBox}
+          slow={slow}
+        /> : ''}
       </div>
-  )
+      : 
+      <div className='menu-container'>
+        <div className='intro'>
+          <p className="intro-text">Welcome to my portfolio. I'm a full stack web developer and solutions engineer.
+          </p>
+        </div>
+        <div className='nav'>
+          <h3 className='selection'>Make your selection</h3>
+          <label className="project-choices">
+            <input type="radio" className="nes-radio is-dark" name="answer-dark" />
+            <span onClick={handleAbout}>About Me</span>
+          </label>
+
+          <label className="project-choices">
+            <input type="radio" className="nes-radio is-dark" name="answer-dark" />
+            <span onClick={handleProjects}>Projects</span>
+          </label>
+              
+          <label className="project-choices">
+            <input type="radio" className="nes-radio is-dark" name="answer-dark" />
+            <span onClick={handleContact}>Contact</span>
+          </label>
+        </div>
+        {display.about ? <About
+          status={display}
+          close={setDisplay}
+          boxSize={boxSize}
+          slow={slow}
+          shrinkBox={shrinkBox}
+      
+        /> : ""}
+        {display.projects ? <ProjectIcons
+          close={setDisplay}
+          shrinkBox={shrinkBox}
+          boxSize={boxSize}
+          growBox={growBox}
+          slow={slow}
+        /> : ''}
+        {display.contact ? <Contact
+          close={setDisplay}
+          shrinkBox={shrinkBox}
+          boxSize={boxSize}
+          growBox={growBox}
+          slow={slow}
+        /> : ''}
+      </div>
+      
+      }
+  </>)
 }

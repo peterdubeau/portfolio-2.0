@@ -4,11 +4,12 @@ import ScreenFlash from '../ScreenFlash/ScreenFlash'
 import Static from '../Static/Static'
 import './Home.css'
 
-export default function Home() {
+export default function Home(props) {
 
-  const [reset, setReset] = useState(true)
+  // const [reset, setReset] = useState(false)
   const [power, setPower] = useState(false)
   const [startFlash, setStartFlash] = useState({})
+  const [doesFlash, setDoesFlash] = useState(false)
   const [home, setHome] = useState({
     name: true,
     start: true
@@ -19,36 +20,22 @@ export default function Home() {
     return new Promise(slowDown => setInterval(slowDown, ms))
   }
 
-  
-  const useMediaQuery = (query) => {
-    const [matches, setMatches] = useState(false);
-    
-    useEffect(() => {
-      const media = window.matchMedia(query);
-      if (media.matches !== matches) {
-        setMatches(media.matches);
-      }
-      const listener = () => {
-        setMatches(media.matches);
-      };
-      media.addListener(listener);
-      return () => media.removeListener(listener);
-    }, [matches, query]);
-    
-    return matches;
+  const handleFlash = () => {
+    let flash = Math.floor(Math.random() * 4)
+    if (flash === 1) {
+      setDoesFlash(true)
+    } 
   }
   
-  let isPageWide = useMediaQuery('(max-width: 720px)')
-
   const handlePower = async () => {
-    setReset(true)
+    handleFlash()
     await slow(250)
     setPower(!power)
   }
 
   const handleStart = async () => {
     for (let i = 0; i < 7; i++) {
-      if (isPageWide) {
+      if (props.isPageWide) {
         setStartFlash({ color: "rgb(48, 98, 48)" })
         await slow(100)
         setStartFlash({ color: "rgb(139 172 15)" })
@@ -71,7 +58,7 @@ export default function Home() {
   };
 
   const gameBoyStart = async () => {
-    if (isPageWide) {
+    if (props.isPageWide) {
       setHome({
         name: true,
         start: false
@@ -86,7 +73,8 @@ export default function Home() {
     
   useEffect((isPageWide) => {
       gameBoyStart()
-  }, [isPageWide])
+  }, [props.isPageWide])
+
   
   return (<>
     <div className='intro-container'>
@@ -107,7 +95,7 @@ export default function Home() {
         <button 
           onKeyPress={handleKeyPress}
           className='reset-button'
-          onClick={() => setReset(false)}
+          onClick={() => setDoesFlash(false)}
         >RESET</button>
         <button
           className='power-button'
@@ -115,7 +103,9 @@ export default function Home() {
         >
         POWER
         </button>
-        {reset ? <ScreenFlash slow={slow}/> : ''}
+        {doesFlash ? <ScreenFlash
+          slow={slow}
+          flash={handleFlash}/> : ''}
         {power ? "" : <Static />}
         <div className="power-light" style={power? {backgroundColor: "red"} : {backgroundColor: "black"} }></div>
       </div>
