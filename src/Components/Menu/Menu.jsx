@@ -10,8 +10,8 @@ export default function Menu(props) {
     about: false,
     projects: false,
     contact: false,
-    gbIntro: false
   })
+  const [gbIntro, setGbIntro] = useState(false)
   const [boxSize, setBoxSize] = useState('')
 
   const slow = (ms) => {
@@ -20,22 +20,22 @@ export default function Menu(props) {
   
   const handleAbout = async () => {
     await slow(600)
-    setDisplay({ about: !display.about })
+    setDisplay({...display, about: !display.about })
     growBox(6,10)
   }
   
   const handleContact = async () => {
     await slow(600)
-    setDisplay({ contact: !display.contact })
+    setDisplay({...display, contact: !display.contact })
     growBox(3,10)
   }
 
   const handleNext = () => {
-    setDisplay({gbIntro: !display.gbIntro})
+    setGbIntro(true)
   }
   const handleProjects = async () => {
     await slow(600)
-    setDisplay({ projects: !display.projects })
+    setDisplay({...display, projects: !display.projects })
     growBox(3,10)
   }
 
@@ -79,19 +79,21 @@ export default function Menu(props) {
     })
   }
   
-  
+
   return (<>
     {props.isPageWide ?
       <div className='menu-container'>
         <div className='intro'>
-          <p className="intro-text" style={display.gbIntro ? { display: "none" } : {}}>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.
+          <p className="intro-text" style={gbIntro ? { display: "none" } : {marginTop: '20px'}}>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.
+             <br/>
+             <br/>
         <label className="next-button">
               <input type="radio" className="nes-radio is-dark" name="answer-dark" />
-              <span onClick={handleNext}>next</span>
+              <span onClick={handleNext}>Press A</span>
             </label>
           </p>
         </div>
-        <div className='nav' style={display.gbIntro ? {} : { display: "none" }}>
+        <div className='nav' style={gbIntro ? {} : { display: "none" }}>
           <h3 className='selection'>Make your selection</h3>
           <label className="project-choices">
             <input type="radio" className="nes-radio is-dark" name="answer-dark" />

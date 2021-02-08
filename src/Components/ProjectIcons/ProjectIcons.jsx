@@ -21,7 +21,7 @@ export default function ProjectIcons(props) {
   const handleClose = async () => {
     props.shrinkBox(3, 10)
     await props.slow(500)
-    props.close({ about: false })
+    props.close({about: false })
   }
 
   return (
