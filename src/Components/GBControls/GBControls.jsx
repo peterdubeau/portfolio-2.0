@@ -6,10 +6,16 @@ export default function GBControls(props) {
     <div className="logo">Pete's<span className="game-boi">GAME BOI</span></div>
     <div className="controls">
       <div className="d-pad">
-        <div class>U</div>
-        <div class>L</div>
-        <div class>D</div>
-        <div class>R</div>
+        <div className='d-pad-vertical'>
+          <div className="u-arrow" style={{transform: 'rotate(90deg)'}}>||</div>
+          <br/>
+          <div className="d-arrow" style={{transform: 'rotate(90deg)'}}>||</div>
+        </div>
+        <div className='d-pad-horizontal'> 
+          <div className="l-arrow">||</div>
+          <div className="d-pad-circle"></div>
+          <div className="r-arrow">||</div>
+        </div>
       </div>
       <div className="ss-buttons-container">
         <div className="ss-buttons"><div className="ss-buttons-actual"></div>Select</div>
@@ -19,8 +25,8 @@ export default function GBControls(props) {
         ></div>Start</div>
       </div>
       <div className="ab-buttons">
-        <div><div>0</div>B</div>
-        <div><div>0</div>A</div>
+        <div className="button-actual"></div><div className="button-label">B</div>
+        <div className="button-actual"></div><div className="button-label">A</div>
       </div>
       <div className="speakers">
         <div className="speaker"></div>

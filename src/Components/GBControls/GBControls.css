@@ -1,14 +1,65 @@
 
 .ab-buttons{
+  position: absolute;
+  right: 20%;
+  top: 63%;
   display: flex;
-  transform: rotate(-40deg);
+  flex-direction: column;
+  transform: rotate(-120deg);
+}
+
+.button-actual{
+  background-color: purple;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+}
+
+.button-label{
+  width: 2px;
+  transform: rotate(120deg);
 }
 
 .controls{
-  /* text-align: center; */
-  /* padding-right: 120px; */
-  /* display: flex; */
   color: darkblue
+}
+
+.d-pad{
+  position: fixed;
+  left: 50px;
+  top: 65%;
+  border-top-left-radius: 100% square;
+}
+
+.d-pad-circle{
+
+}
+
+.d-pad-vertical{
+  border-radius: 5px;
+  position: absolute;
+  background-color: black;
+  color: rgb(70 70 70);
+  width: 40px;
+  height: 120px;
+  left: 40px;
+  display:flex; 
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.d-pad-horizontal{
+  border-radius: 5px;
+  position: absolute;
+  background-color: black;
+  color: rgb(70 70 70);
+  top: 40px;
+  width: 120px;
+  height: 40px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .game-boi{
@@ -30,7 +81,7 @@
   width: 175px;
   font-size: 10px;
   bottom: 10%;
-  left: 35%;
+  left: 25%;
   text-align: center;
   display: flex;
   justify-content: space-around;
