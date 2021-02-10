@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import About from '../About/About'
 import ProjectIcons from '../ProjectIcons/ProjectIcons'
 import Contact from '../Contact/Contact'
+import GBControls from '../GBControls/GBControls'
 import './Menu.css'
 
 export default function Menu(props) {
@@ -81,7 +82,7 @@ export default function Menu(props) {
   
 
   return (<>
-    {props.isPageWide ?
+    {props.isPageWide ? <>
       <div className='menu-container'>
         <div className='intro'>
           <p className="intro-text" style={gbIntro ? { display: "none" } : {marginTop: '20px'}}>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.
@@ -133,6 +134,8 @@ export default function Menu(props) {
           slow={slow}
         /> : ''}
       </div>
+      <GBControls />
+      </>
       : 
       <div className='menu-container'>
         <div className='intro'>

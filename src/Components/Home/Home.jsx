@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import ScreenFlash from '../ScreenFlash/ScreenFlash'
 import Static from '../Static/Static'
+import GBControls from '../GBControls/GBControls'
 import './Home.css'
 
 export default function Home(props) {
@@ -110,5 +111,6 @@ export default function Home(props) {
         <div className="power-light" style={power? {backgroundColor: "red"} : {backgroundColor: "black"} }></div>
       </div>
     </div>
+    {props.isPageWide ? <GBControls handleStart={handleStart}/> : ""}
   </>)
 }

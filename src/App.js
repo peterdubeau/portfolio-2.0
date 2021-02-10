@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import {Route} from 'react-router-dom'
 import Home from './Components/Home/Home'
 import Menu from './Components/Menu/Menu'
+import GBControls from './Components/GBControls/GBControls'
 
 function App() {
 
@@ -29,15 +30,13 @@ function App() {
   return (<>
     
     <Route path='/' exact>
-      <Home isPageWide={isPageWide}/>
+      <Home isPageWide={isPageWide} />
     </Route>
     
     <Route path='/menu' exact>
-      <Menu isPageWide={isPageWide}/>
+      <Menu isPageWide={isPageWide} />
     </Route>
-
-    {/* <div className='gb-controls'> buttons will go here</div> */}
-
+      
   </>);
 }
 
