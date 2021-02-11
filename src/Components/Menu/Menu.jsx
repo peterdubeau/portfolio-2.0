@@ -14,6 +14,7 @@ export default function Menu(props) {
   })
   const [gbIntro, setGbIntro] = useState(false)
   const [boxSize, setBoxSize] = useState('')
+  const [arrowPosition, setArrowPosition] = useState(0)
 
   const slow = (ms) => {
     return new Promise(slowDown => setInterval(slowDown, ms))
@@ -34,12 +35,16 @@ export default function Menu(props) {
   const handleNext = () => {
     setGbIntro(true)
   }
+
+  const handleBack = () => {
+      setGbIntro(false)
+  }
+  
   const handleProjects = async () => {
     await slow(600)
     setDisplay({...display, projects: !display.projects })
     growBox(3,10)
   }
-
 
 
   const growBox = async (h,w) => {
@@ -84,6 +89,20 @@ export default function Menu(props) {
   return (<>
     {props.isPageWide ? <>
       <div className='menu-container'>
+        <div className="gray-bar">
+        <div className="left-lines">
+          <div className="red-line"></div>
+          <div className="blue-line"></div>
+        </div>
+        <p style={{
+          fontSize: "8px",
+              marginTop: "10px",
+            color: "white"}}>DOT MATRIX WITH SOUND</p>
+        <div className="right-lines">
+          <div className="red-line"></div>
+          <div className="blue-line"></div>
+        </div>
+      </div>
         <div className='intro'>
           <p className="intro-text" style={gbIntro ? { display: "none" } : {marginTop: '20px'}}>Welcome to my portfolio. I'm a full stack web developer and solutions engineer.
              <br/>
@@ -97,17 +116,29 @@ export default function Menu(props) {
         <div className='nav' style={gbIntro ? {} : { display: "none" }}>
           <h3 className='selection'>Make your selection</h3>
           <label className="project-choices">
-            <input type="radio" className="nes-radio is-dark" name="answer-dark" />
+          {arrowPosition === 0 ?
+              < input type="radio" className="nes-radio" name="answer-dark" checked/>
+            :
+              < input type="radio" className="nes-radio" name="answer-dark" />
+            }    
             <span onClick={handleAbout}>About Me</span>
           </label>
 
           <label className="project-choices">
-            <input type="radio" className="nes-radio is-dark" name="answer-dark" />
+            {arrowPosition === 1 ?
+              < input type="radio" className="nes-radio" name="answer-dark" checked/>
+            :
+              < input type="radio" className="nes-radio" name="answer-dark" />
+            }     
             <span onClick={handleProjects}>Projects</span>
           </label>
               
           <label className="project-choices">
-            <input type="radio" className="nes-radio is-dark" name="answer-dark" />
+          {arrowPosition === 2 ?
+              < input type="radio" className="nes-radio" name="answer-dark" checked/>
+            :
+              < input type="radio" className="nes-radio" name="answer-dark" />
+            }    
             <span onClick={handleContact}>Contact</span>
           </label>
         </div>
@@ -134,7 +165,12 @@ export default function Menu(props) {
           slow={slow}
         /> : ''}
       </div>
-      <GBControls />
+      <GBControls
+        handleNext={handleNext}
+        handleBack={handleBack}
+        setArrowPosition={setArrowPosition}
+        arrowPosition={arrowPosition}
+      />
       </>
       : 
       <div className='menu-container'>

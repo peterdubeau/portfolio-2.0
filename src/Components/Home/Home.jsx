@@ -79,7 +79,19 @@ export default function Home(props) {
   
   return (<>
     <div className='intro-container'>
-    <div className="gray-bar"></div>
+      <div className="gray-bar">
+        <div className="left-lines">
+          <div className="red-line"></div>
+          <div className="blue-line"></div>
+        </div>
+        <p style={{
+          fontSize: "8px",
+        marginTop: "10px"}}>DOT MATRIX WITH SOUND</p>
+        <div className="right-lines">
+          <div className="red-line"></div>
+          <div className="blue-line"></div>
+        </div>
+      </div>
       <div className='intro'>
         {home?.name ? <h1 className="pete-dubeau">Pete Du Beau</h1> : ""}
         {home?.start ? <>

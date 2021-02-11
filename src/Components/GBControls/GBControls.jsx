@@ -2,14 +2,39 @@ import React from 'react'
 import './GBControls.css'
 
 export default function GBControls(props) {
+
+  const handleArrowPositionDown = () => {
+    let pos = props.arrowPosition
+    if (pos < 2) {
+      pos += 1
+      props.setArrowPosition(pos)
+    } 
+  }
+
+  const handleArrowPositionUp = () => {
+    console.log("here")
+    let pos = props.arrowPosition
+    if (pos > 0) {
+      console.log("he boi")
+      pos -= 1
+      props.setArrowPosition(pos)
+    } 
+  }
+
+  const handleBack = () => {
+    props.setArrowPosition(0)
+    props.handleBack()
+  }
+
+  console.log(props.arrowPosition)
   return (<>
     <div className="logo">Pete's<span className="game-boi">GAME BOI</span></div>
     <div className="controls">
       <div className="d-pad">
         <div className='d-pad-vertical'>
-          <div className="u-arrow" style={{transform: 'rotate(90deg)'}}>||</div>
+          <div className="u-arrow" style={{ transform: 'rotate(90deg)' }} onClick={handleArrowPositionUp}>||</div>
           <br/>
-          <div className="d-arrow" style={{transform: 'rotate(90deg)'}}>||</div>
+          <div className="d-arrow" style={{transform: 'rotate(90deg)'}} onClick={handleArrowPositionDown}>||</div>
         </div>
         <div className='d-pad-horizontal'> 
           <div className="l-arrow">||</div>
@@ -25,8 +50,8 @@ export default function GBControls(props) {
         ></div>Start</div>
       </div>
       <div className="ab-buttons">
-        <div className="button-actual"></div><div className="button-label">B</div>
-        <div className="button-actual"></div><div className="button-label">A</div>
+        <div className="button-actual" onClick={handleBack}></div><div className="button-label">B</div>
+        <div className="button-actual" onClick={props.handleNext}></div><div className="button-label">A</div>
       </div>
       <div className="speakers">
         <div className="speaker"></div>
