@@ -1,60 +1,114 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import ScreenFlash from '../ScreenFlash/ScreenFlash'
 import Static from '../Static/Static'
+import GBControls from '../GBControls/GBControls'
 import './Home.css'
 
-export default function Home() {
+export default function Home(props) {
 
-  const [reset, setReset] = useState(true)
+  // const [reset, setReset] = useState(false)
   const [power, setPower] = useState(false)
-  const [startFlash, setStartFlash] = useState({color: "white"})
+  const [startFlash, setStartFlash] = useState({})
+  const [doesFlash, setDoesFlash] = useState(false)
+  const [home, setHome] = useState({
+    name: true,
+    start: true
+  })
   
   const history = useHistory()
   const slow = (ms) => {
     return new Promise(slowDown => setInterval(slowDown, ms))
   }
 
+  const handleFlash = () => {
+    let flash = Math.floor(Math.random() * 4)
+    if (flash === 1) {
+      setDoesFlash(true)
+    } 
+  }
+  
   const handlePower = async () => {
-    setReset(true)
+    handleFlash()
     await slow(250)
     setPower(!power)
   }
 
   const handleStart = async () => {
     for (let i = 0; i < 7; i++) {
-      setStartFlash({ color: "black" })
-      await slow(100)
-      setStartFlash({ color: "white" })
-      await slow(100)
+      if (props.isPageWide) {
+        setStartFlash({ color: "rgb(48, 98, 48)" })
+        await slow(100)
+        setStartFlash({ color: "rgb(139 172 15)" })
+        await slow(100)
+      } else {
+        setStartFlash({ color: "black" })
+        await slow(100)
+        setStartFlash({ color: "white" })
+        await slow(100)
+      }
     }
     history.push('/menu')
   }
 
-  const handleKeyPress = e => {
+
+  const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleStart()
     }
   };
 
+  const gameBoyStart = async () => {
+    if (props.isPageWide) {
+      setHome({
+        name: true,
+        start: false
+      })
+      await slow(4000)
+      setHome({
+        name: false,
+        start: true
+      })
+    } 
+  }
+    
+  useEffect((isPageWide) => {
+      gameBoyStart()
+  }, [props.isPageWide])
 
-  return (
+  
+  return (<>
     <div className='intro-container'>
+      <div className="gray-bar">
+        <div className="left-lines">
+          <div className="red-line"></div>
+          <div className="blue-line"></div>
+        </div>
+        <p style={{
+          fontSize: "8px",
+        marginTop: "10px"}}>DOT MATRIX WITH SOUND</p>
+        <div className="right-lines">
+          <div className="red-line"></div>
+          <div className="blue-line"></div>
+        </div>
+      </div>
       <div className='intro'>
-        <h1>Pete <br/>Du Beau</h1>
-        <h3>My Portfolio</h3>
+        {home?.name ? <h1 className="pete-dubeau">Pete Du Beau</h1> : ""}
+        {home?.start ? <>
+        <h3 className="my-portfolio">Portfolio Redux</h3>
         <br/><br/>
         <p
+          className="start"
           onClick={handleStart}
           style={startFlash}
-        >PRESS START</p>
+        >PRESS START</p></>
+       : "" }
       </div>
-    
       <div className='power-buttons'>
         <button 
           onKeyPress={handleKeyPress}
           className='reset-button'
-          onClick={() => setReset(false)}
+          onClick={() => setDoesFlash(false)}
         >RESET</button>
         <button
           className='power-button'
@@ -62,10 +116,13 @@ export default function Home() {
         >
         POWER
         </button>
-        {reset ? <ScreenFlash slow={slow}/> : ''}
+        {doesFlash ? <ScreenFlash
+          slow={slow}
+          flash={handleFlash}/> : ''}
         {power ? "" : <Static />}
         <div className="power-light" style={power? {backgroundColor: "red"} : {backgroundColor: "black"} }></div>
       </div>
     </div>
-  )
+    {props.isPageWide ? <GBControls handleStart={handleStart}/> : ""}
+  </>)
 }

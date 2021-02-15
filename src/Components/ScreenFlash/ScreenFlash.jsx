@@ -4,9 +4,11 @@ import './ScreenFlash.css'
 export default function ScreenFlash(props) {
 
   const [color, setColor] = useState({ backgroundColor: 'blue' })
+  const [Flicker, setFlicker] = useState(false)
 
   //slows down the loop to allow color to be rendered
   //guidance from https://flaviocopes.com/how-to-slow-loop-javascript/
+
 
   const colorChange = async () => {
       for (let i = 0; i < 10; i++) {
@@ -23,23 +25,16 @@ export default function ScreenFlash(props) {
       }
     }
 
-
   useEffect(() => {
     colorChange()
+    // props.flash()
   },[])
-
-  // const gray = {
-  //   backgroundColor: "gray"
-  // }
-
-  // const blue = {
-  //   backgroundColor: "blue"
-  // }
-
-
-
-  return (
-    <div className="flicker" style={color}></div>
-  )
+// const test = props.flash()
+// console.log(props.flash())
+  return (<>
+    {/* {props.flash ? "" : */}
+      <div className="flicker" style={color}></div>
+    {/* } */}
+  </>)
 }
 

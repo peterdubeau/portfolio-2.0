@@ -1,10 +1,37 @@
+.title{
+  width: 200px;
+}
+
 .about-container{
   position: absolute;
+  display: flex;
+  flex-direction: column;
   top: 5%;
   margin: 10px;
+  width: 90vw;
   font-size: 14px;
+}
+
+.about-me-text{
+  display: none;
+  position: absolute;
+  top: 10;
+  left: 5;
+  height: 300px;
+  overflow: auto;
 }
 
 .project-titles{
   margin: 20px auto;
+}
+
+@media screen and (min-width: 720px){
+  .about-me-text{
+    font-size: 30px;
+  }
+
+  .nes-container.is-dark.with-title{
+    width: 90vw;
+  }
+
 }

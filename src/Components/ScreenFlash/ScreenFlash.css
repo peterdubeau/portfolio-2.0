@@ -7,3 +7,10 @@
   left: 0%;
   background-size: cover;
 }
+
+@media screen and (max-width: 720px){
+  .flicker{
+    display: none;
+  }
+
+}

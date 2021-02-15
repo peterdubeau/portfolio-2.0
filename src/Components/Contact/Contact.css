@@ -1,0 +1,14 @@
+a.page-links:link, a.page-links:visited, a.page-links:hover, a.page-links:active {
+  color: white;
+  text-decoration: none;
+}
+
+.contact-container{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 5%;
+  margin: 10px;
+  width: 90vw;
+  font-size: 14px;
+}

@@ -1,0 +1,43 @@
+.project-container{
+  position: absolute;
+  top: 5%;
+  margin: 10px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+}
+
+.project-description{
+  height: 300px;
+  overflow: auto;
+}
+
+.project-details{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div.project-links{
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 20px auto;
+}
+
+.project-link-buttons{
+  margin: auto 20px; 
+}
+
+.project-image{
+  image-rendering: pixelated;
+  max-height: 150px;
+  /* filter: sepia(100) */
+}
+
+@media screen and (min-width: 720px){
+  .project-description{
+    font-size: 30px;
+  }
+}
