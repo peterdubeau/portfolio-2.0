@@ -12,21 +12,29 @@ export default function GBControls(props) {
   }
 
   const handleArrowPositionUp = () => {
-    console.log("here")
     let pos = props.arrowPosition
     if (pos > 0) {
-      console.log("he boi")
       pos -= 1
       props.setArrowPosition(pos)
     } 
   }
 
-  const handleBack = () => {
+  const handleB = async () => {
+    
     props.setArrowPosition(0)
     props.handleBack()
   }
 
-  console.log(props.arrowPosition)
+  const handleA = async () => {
+    if (!props.gbIntro){
+      props.handleNext()
+    } else {
+      props.handleSelection()
+    }
+    await props.slow(2000)
+    props.setArrowPosition(0)
+  }
+
   return (<>
     <div className="logo">Pete's<span className="game-boi">GAME BOI</span></div>
     <div className="controls">
@@ -50,8 +58,8 @@ export default function GBControls(props) {
         ></div>Start</div>
       </div>
       <div className="ab-buttons">
-        <div className="button-actual" onClick={handleBack}></div><div className="button-label">B</div>
-        <div className="button-actual" onClick={props.handleNext}></div><div className="button-label">A</div>
+        <div className="button-actual" onClick={handleB}></div><div className="button-label">B</div>
+        <div className="button-actual" onClick={handleA}></div><div className="button-label">A</div>
       </div>
       <div className="speakers">
         <div className="speaker"></div>

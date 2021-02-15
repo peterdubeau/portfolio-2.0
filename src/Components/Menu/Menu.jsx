@@ -6,7 +6,6 @@ import GBControls from '../GBControls/GBControls'
 import './Menu.css'
 
 export default function Menu(props) {
-  
   const [display, setDisplay] = useState({
     about: false,
     projects: false,
@@ -15,10 +14,17 @@ export default function Menu(props) {
   const [gbIntro, setGbIntro] = useState(false)
   const [boxSize, setBoxSize] = useState('')
   const [arrowPosition, setArrowPosition] = useState(0)
-
+  
+  console.log(arrowPosition)
   const slow = (ms) => {
     return new Promise(slowDown => setInterval(slowDown, ms))
   }
+
+  // const [options, setOptions] = useState({
+  //   about: 'about',
+  //   projects: 'projects',
+  //   contact: 'contact',
+  // })
   
   const handleAbout = async () => {
     await slow(600)
@@ -31,6 +37,22 @@ export default function Menu(props) {
     setDisplay({...display, contact: !display.contact })
     growBox(3,10)
   }
+  
+  const handleProjects = async () => {
+    await slow(600)
+    setDisplay({...display, projects: !display.projects })
+    growBox(3,10)
+  }
+
+  const handleSelection =  async () => {
+    if (arrowPosition === 0) {
+      handleAbout()
+    } else if(arrowPosition === 1) {
+      handleProjects()
+    } else if (arrowPosition === 2) {
+      handleContact()
+    }
+  }
 
   const handleNext = () => {
     setGbIntro(true)
@@ -39,13 +61,8 @@ export default function Menu(props) {
   const handleBack = () => {
       setGbIntro(false)
   }
-  
-  const handleProjects = async () => {
-    await slow(600)
-    setDisplay({...display, projects: !display.projects })
-    growBox(3,10)
-  }
 
+  
 
   const growBox = async (h,w) => {
     setBoxSize({
@@ -117,30 +134,30 @@ export default function Menu(props) {
           <h3 className='selection'>Make your selection</h3>
           <label className="project-choices">
           {arrowPosition === 0 ?
-              < input type="radio" className="nes-radio" name="answer-dark" checked/>
+              <input type="radio" className="nes-radio" name="about-dark" checked/>
             :
-              < input type="radio" className="nes-radio" name="answer-dark" />
+              <input type="radio" className="nes-radio" name="about-dark" />
             }    
             <span onClick={handleAbout}>About Me</span>
           </label>
 
-          <label className="project-choices">
+          <label className="project-choices" >
             {arrowPosition === 1 ?
-              < input type="radio" className="nes-radio" name="answer-dark" checked/>
+              < input type="radio" className="nes-radio" name="about-dark" checked/>
             :
-              < input type="radio" className="nes-radio" name="answer-dark" />
+              < input type="radio" className="nes-radio" name="about-dark" />
             }     
             <span onClick={handleProjects}>Projects</span>
           </label>
               
           <label className="project-choices">
           {arrowPosition === 2 ?
-              < input type="radio" className="nes-radio" name="answer-dark" checked/>
+              < input type="radio" className="nes-radio" name="about-dark" checked/>
             :
-              < input type="radio" className="nes-radio" name="answer-dark" />
+              < input type="radio" className="nes-radio" name="about-dark" />
             }    
             <span onClick={handleContact}>Contact</span>
-          </label>
+            </label>
         </div>
         {display.about ? <About
           status={display}
@@ -170,6 +187,9 @@ export default function Menu(props) {
         handleBack={handleBack}
         setArrowPosition={setArrowPosition}
         arrowPosition={arrowPosition}
+        gbIntro={gbIntro}
+        handleSelection={handleSelection}
+        slow={slow}
       />
       </>
       : 
