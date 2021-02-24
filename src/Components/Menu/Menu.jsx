@@ -15,7 +15,6 @@ export default function Menu(props) {
   const [boxSize, setBoxSize] = useState('')
   const [arrowPosition, setArrowPosition] = useState(0)
   
-  console.log(arrowPosition)
   const slow = (ms) => {
     return new Promise(slowDown => setInterval(slowDown, ms))
   }
@@ -106,6 +105,7 @@ export default function Menu(props) {
   return (<>
     {props.isPageWide ? <>
       <div className='menu-container'>
+        <div className="light-grey-bar"></div>
         <div className="gray-bar">
         <div className="left-lines">
           <div className="red-line"></div>

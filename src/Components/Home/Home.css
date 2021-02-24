@@ -46,7 +46,8 @@
   div.intro{
     background-color: rgb(139 172 15);
     color: rgb(48, 98, 48);
-    width: 390px;
+    min-width: 390px;
+    max-width: 390px;
     align-self: right;
     height: 300px;
     border: 30px solid rgb(117	117	117);
@@ -60,6 +61,13 @@
   .intro-container{
     display: flex;
     justify-content: center;
+  }
+
+  .light-gray-bar{
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    background-color: rgb(214	205	200);
   }
 
   h1.pete-dubeau{

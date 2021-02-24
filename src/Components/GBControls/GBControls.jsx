@@ -20,20 +20,24 @@ export default function GBControls(props) {
   }
 
   const handleB = async () => {
-    
-    props.setArrowPosition(0)
-    props.handleBack()
+    if (window.location.pathname === '/menu') {
+      props.setArrowPosition(0)
+      props.handleBack()
+    }
   }
 
   const handleA = async () => {
-    if (!props.gbIntro){
-      props.handleNext()
-    } else {
-      props.handleSelection()
+    if (window.location.pathname === '/menu') {
+      if (!props.gbIntro) {
+        props.handleNext()
+      } else {
+        props.handleSelection()
+      }
+      await props.slow(2000)
+      props.setArrowPosition(0)
     }
-    await props.slow(2000)
-    props.setArrowPosition(0)
   }
+
 
   return (<>
     <div className="logo">Pete's<span className="game-boi">GAME BOI</span></div>

@@ -76,9 +76,11 @@ export default function Home(props) {
       gameBoyStart()
   }, [props.isPageWide])
 
+
   
   return (<>
     <div className='intro-container'>
+      <div className="light-gray-bar"></div>
       <div className="gray-bar">
         <div className="left-lines">
           <div className="red-line"></div>
@@ -123,6 +125,9 @@ export default function Home(props) {
         <div className="power-light" style={power? {backgroundColor: "red"} : {backgroundColor: "black"} }></div>
       </div>
     </div>
-    {props.isPageWide ? <GBControls handleStart={handleStart}/> : ""}
+    {props.isPageWide ? <GBControls
+      handleStart={handleStart}
+      
+    /> : ""}
   </>)
 }

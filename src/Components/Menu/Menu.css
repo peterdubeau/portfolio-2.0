@@ -58,11 +58,12 @@
     display: flex;
     justify-content: space-between;
     position: absolute;
-    width: 350px;
     height: 30px;
     background:rgb(117	117	117);
   }
+
   .nes-radio{color: green;}
+
   .left-lines{
     width: 30%;
   }
