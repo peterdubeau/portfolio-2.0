@@ -2,7 +2,7 @@ import React from 'react'
 import './GBControls.css'
 
 export default function GBControls(props) {
-
+  
   const handleArrowPositionDown = () => {
     let pos = props.arrowPosition
     if (pos < 2) {
@@ -22,6 +22,7 @@ export default function GBControls(props) {
   const handleB = async () => {
     if (window.location.pathname === '/menu') {
       props.setArrowPosition(0)
+      if (props.display.about === false || props.display.projects === false || props.display.contact === false)
       props.handleBack()
     }
   }
@@ -32,12 +33,11 @@ export default function GBControls(props) {
         props.handleNext()
       } else {
         props.handleSelection()
+        await props.slow(2000)
+        props.setArrowPosition(0)
       }
-      await props.slow(2000)
-      props.setArrowPosition(0)
     }
   }
-
 
   return (<>
     <div className="logo">Pete's<span className="game-boi">GAME BOI</span></div>

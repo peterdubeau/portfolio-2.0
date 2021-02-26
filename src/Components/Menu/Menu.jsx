@@ -168,6 +168,7 @@ export default function Menu(props) {
       
         /> : ""}
         {display.projects ? <ProjectIcons
+          isPageWide={props.isPageWide}
           close={setDisplay}
           shrinkBox={shrinkBox}
           boxSize={boxSize}
@@ -190,6 +191,8 @@ export default function Menu(props) {
         gbIntro={gbIntro}
         handleSelection={handleSelection}
         slow={slow}
+        display={display}
+        setDisplay={setDisplay}
       />
       </>
       : 
