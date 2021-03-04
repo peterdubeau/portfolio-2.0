@@ -19,11 +19,6 @@ export default function Menu(props) {
     return new Promise(slowDown => setInterval(slowDown, ms))
   }
 
-  // const [options, setOptions] = useState({
-  //   about: 'about',
-  //   projects: 'projects',
-  //   contact: 'contact',
-  // })
   
   const handleAbout = async () => {
     await slow(600)
