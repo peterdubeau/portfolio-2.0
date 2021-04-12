@@ -30,7 +30,6 @@ export default function ProjectIcons(props) {
       height: props.boxSize.height,
       width: props.boxSize.width
     }}> 
-    {/* selectedProject.title === undefined &&  */}
         <p className='title' style={props.boxSize.done === true  ? { display: "inherit" } : { display: 'none' }} >Projects</p>
           <div className="project-list" style={props.boxSize.done === true ? { display: "inherit" } : { display: 'none' }} >
           {projectDetails.map(project =>

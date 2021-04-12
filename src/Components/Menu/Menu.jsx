@@ -12,7 +12,11 @@ export default function Menu(props) {
     contact: false,
   });
   const [gbIntro, setGbIntro] = useState(false);
-  const [boxSize, setBoxSize] = useState("");
+  const [boxSize, setBoxSize] = useState({
+    height: ``,
+    width: '',
+    done: true
+  });
   const [arrowPosition, setArrowPosition] = useState(0);
 
   const slow = (ms) => {
@@ -20,20 +24,25 @@ export default function Menu(props) {
   };
 
   const handleChoiceWithSize = (height, width) => async (e) => {
-    const { name, value } = e.currentTarget;
-    await slow(600);
-    setDisplay({ ...display, [name]: value });
-    growBox(height, width);
+    console.log(e.currentTarget.name)
+    console.log("here")
+    if (boxSize.done) {
+      const { name, value } = e.currentTarget;
+      await slow(600);
+      setDisplay({ ...display, [name]: value });
+      growBox(height, width);
+    } 
+    
   };
 
   const handleSelection = async () => {
-    // if (arrowPosition === 0) {
-    //   handleChoiceWithSize()
-    // } else if (arrowPosition === 1) {
-    //   handleProjects();
-    // } else if (arrowPosition === 2) {
-    //   handleContact();
-    // }
+    if (arrowPosition === 0) {
+      
+    } else if (arrowPosition === 1) {
+      // handleProjects();
+    } else if (arrowPosition === 2) {
+      // handleContact();
+    }
   };
 
   const handleNext = () => {
@@ -45,6 +54,7 @@ export default function Menu(props) {
   };
 
   const growBox = async (h, w) => {
+    console.log("waaahhh")
     setBoxSize({
       height: `0vh`,
       width: `0vw`,
@@ -206,7 +216,7 @@ export default function Menu(props) {
             setArrowPosition={setArrowPosition}
             arrowPosition={arrowPosition}
             gbIntro={gbIntro}
-            handleSelection={handleChoiceWithSize}
+            handleSelection={handleSelection}
             slow={slow}
             display={display}
             setDisplay={setDisplay}
