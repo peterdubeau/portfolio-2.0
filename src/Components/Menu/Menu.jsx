@@ -14,8 +14,8 @@ export default function Menu(props) {
   const [gbIntro, setGbIntro] = useState(false);
   const [boxSize, setBoxSize] = useState({
     height: ``,
-    width: '',
-    done: true
+    width: "",
+    done: true,
   });
   const [arrowPosition, setArrowPosition] = useState(0);
 
@@ -24,24 +24,32 @@ export default function Menu(props) {
   };
 
   const handleChoiceWithSize = (height, width) => async (e) => {
-    console.log(e.currentTarget.name)
-    console.log("here")
     if (boxSize.done) {
       const { name, value } = e.currentTarget;
+      console.log(e.currentTarget.name);
       await slow(600);
       setDisplay({ ...display, [name]: value });
       growBox(height, width);
-    } 
-    
+    }
   };
 
-  const handleSelection = async () => {
+  const handleClose = async (height, width) => {
+    shrinkBox(height, width);
+    await slow(500);
+    setDisplay({
+      about: false,
+      projects: false,
+      contact: false,
+    });
+  };
+
+  const handleSelection = async (arrowPosition) => {
     if (arrowPosition === 0) {
-      
+      handleChoiceWithSize(3, 5);
     } else if (arrowPosition === 1) {
-      // handleProjects();
+      handleChoiceWithSize(3, 5);
     } else if (arrowPosition === 2) {
-      // handleContact();
+      handleChoiceWithSize(3, 5);
     }
   };
 
@@ -54,7 +62,7 @@ export default function Menu(props) {
   };
 
   const growBox = async (h, w) => {
-    console.log("waaahhh")
+    console.log("waaahhh");
     setBoxSize({
       height: `0vh`,
       width: `0vw`,
@@ -146,6 +154,7 @@ export default function Menu(props) {
                   name="about"
                   value={display.about}
                   checked={arrowPosition === 0}
+                  readOnly
                   onClick={handleChoiceWithSize(6, 10)}
                 />
                 <span>About Me</span>
@@ -159,6 +168,7 @@ export default function Menu(props) {
                   value={display.projects}
                   checked={arrowPosition === 1}
                   onClick={handleChoiceWithSize(3, 5)}
+                  readOnly
                 />
                 <span>Projects</span>
               </label>
@@ -171,6 +181,7 @@ export default function Menu(props) {
                   value={display.contact}
                   checked={arrowPosition === 2}
                   onClick={handleChoiceWithSize(3, 5)}
+                  readOnly
                 />
                 <span>Contact</span>
               </label>
@@ -205,6 +216,7 @@ export default function Menu(props) {
                 boxSize={boxSize}
                 growBox={growBox}
                 slow={slow}
+                handleClose={handleClose}
               />
             ) : (
               ""
@@ -220,6 +232,8 @@ export default function Menu(props) {
             slow={slow}
             display={display}
             setDisplay={setDisplay}
+            handleClose={handleClose}
+            shrinkBox={shrinkBox}
           />
         </>
       ) : (
@@ -232,37 +246,38 @@ export default function Menu(props) {
           </div>
           <div className="nav">
             <h3 className="selection">Make your selection</h3>
-              <label
-                className="project-choices"
-              >
+            <label className="project-choices">
               <input
-                  type="radio"
-                  className="nes-radio is-dark"
-                  name="about"
-                  onClick={handleChoiceWithSize(6, 10)}
-                  checked={display.about}
+                type="radio"
+                className="nes-radio is-dark"
+                name="about"
+                onClick={handleChoiceWithSize(6, 10)}
+                checked={display.about}
+                readOnly
               />
               <span>About Me</span>
             </label>
 
             <label className="project-choices">
               <input
-                  type="radio"
-                  className="nes-radio is-dark"
-                  name="projects"
-                  onClick={handleChoiceWithSize(3, 5)}
-                  checked={display.projects}
+                type="radio"
+                className="nes-radio is-dark"
+                name="projects"
+                onClick={handleChoiceWithSize(3, 5)}
+                checked={display.projects}
+                readOnly
               />
-              <span >Projects</span>
+              <span>Projects</span>
             </label>
 
             <label className="project-choices">
               <input
-                  type="radio"
-                  className="nes-radio is-dark"
-                  name="contact"
-                  onClick={handleChoiceWithSize(3, 5)}
-                  checked={display.contact}
+                type="radio"
+                className="nes-radio is-dark"
+                name="contact"
+                onClick={handleChoiceWithSize(3, 5)}
+                checked={display.contact}
+                readOnly
               />
               <span>Contact</span>
             </label>
